@@ -10,8 +10,8 @@ brain=Brain()
 left_drive_smart = Motor(Ports.PORT1, GearSetting.RATIO_18_1, False)
 right_drive_smart = Motor(Ports.PORT10, GearSetting.RATIO_18_1, True)
 drivetrain = DriveTrain(left_drive_smart, right_drive_smart, 319.19, 295, 40, MM, 1)
-Claw_motor = Motor(Ports.PORT3, GearSetting.RATIO_18_1, False)
-Neck_motor = Motor(Ports.PORT8, GearSetting.RATIO_18_1, False)
+claw_motor = Motor(Ports.PORT3, GearSetting.RATIO_18_1, False)
+arm_motor = Motor(Ports.PORT8, GearSetting.RATIO_18_1, False)
 
 
 # wait for rotation sensor to fully initialize
@@ -53,141 +53,25 @@ print("\033[2J")
 
 # Library imports
 from vex import *
-import urandom
-import math
-
-
-wait(2, SECONDS)
-
-
-Neck_motor.set_max_torque(1000, PERCENT)
-
-
-# CLAW SETUP
+55, 63, 70
+#Set up
+# Set up
 Claw_motor.spin(FORWARD)
-Neck_motor.spin_for(FORWARD, 360, DEGREES)
-
-# MOVEMENT
-
-drivetrain.drive_for(FORWARD, 36, INCHES)
-drivetrain.turn_for(LEFT, 90, DEGREES)
-
-drivetrain.drive_for(FORWARD, 7, INCHES)
-
-
-# CLAW PICKUP
-wait(1, SECONDS)
-
-Neck_motor.spin_for(REVERSE, 125,DEGREES)
-wait(1, SECONDS)
-
-Claw_motor.spin(REVERSE)
-wait(1, SECONDS)
-
-Neck_motor.spin_for(FORWARD, 125, DEGREES)
-wait(1, SECONDS)
-
-
-# REACH DELIVERY POINT
-
-drivetrain.drive_for(REVERSE, 3, INCHES)
-drivetrain.turn_for(RIGHT, 87, DEGREES)
-
-drivetrain.drive_for(FORWARD, 45, INCHES)
-
-drivetrain.turn_for(LEFT, 94, DEGREES)
-
-drivetrain.drive_for(FORWARD, 67, INCHES)
-
-#LEAVE BALL ON DESTINATION POINT
-
-Neck_motor.spin_for(REVERSE, 125, DEGREES)
-wait(2, SECONDS)
-Claw_motor.spin(FORWARD)
-wait(2, SECONDS)
-Neck_motor.spin_for(FORWARD, 125, DEGREES)
-wait(2, SECONDS)
-Claw_motor.spin(REVERSE)
-
-#RETURN TO PICKUP
-
-drivetrain.drive_for(REVERSE, 65, INCHES)
-drivetrain.turn_for(LEFT, 92, DEGREES)
-drivetrain.drive_for(FORWARD, 45, INCHES)
+Neck_motor.spin_for(FORWARD, 230, DEGREES)
+# Drive to pick up
+drivetrain.drive_for(FORWARD, 55, INCHES)
 drivetrain.turn_for(RIGHT, 90, DEGREES)
-drivetrain.drive_for(FORWARD, 5, INCHES)
-Claw_motor.spin(FORWARD)
-
-#PICK UP 2
-wait(1, SECONDS)
-
-Neck_motor.spin_for(REVERSE, 125,DEGREES)
-wait(1, SECONDS)
-
-Claw_motor.spin(REVERSE)
-wait(1, SECONDS)
-
-Neck_motor.spin_for(FORWARD, 125, DEGREES)
-wait(1, SECONDS)
-
-drivetrain.drive_for(REVERSE, 3, INCHES)
-drivetrain.turn_for(RIGHT, 90, DEGREES)
-
-drivetrain.drive_for(FORWARD, 45, INCHES)
-
+drivetrain.drivefor(FORWARD, 1, INCHES)
+#Drop off
+drivetrain.drive_for(REVERSE, 5, INCHES)
 drivetrain.turn_for(LEFT, 90, DEGREES)
-
-drivetrain.drive_for(FORWARD, 65, INCHES)
-
-#LEAVE BALL ON DESTINATION POINT 2
-
-Neck_motor.spin_for(REVERSE, 125, DEGREES)
-wait(2, SECONDS)
-Claw_motor.spin(FORWARD)
-wait(2, SECONDS)
-Neck_motor.spin_for(FORWARD, 125, DEGREES)
-wait(2, SECONDS)
-Claw_motor.spin(REVERSE)
-
-#RETURN TO PICKUP 2
-
-drivetrain.drive_for(REVERSE, 65, INCHES)
+drivetrain.drive_for(FORWARD, 37, INCHES)
 drivetrain.turn_for(LEFT, 90, DEGREES)
-drivetrain.drive_for(FORWARD, 45, INCHES)
-drivetrain.turn_for(RIGHT, 90, DEGREES)
-drivetrain.drive_for(FORWARD, 3, INCHES)
-
-#PICK UP 3
-wait(1, SECONDS)
-
-Neck_motor.spin_for(REVERSE, 125,DEGREES)
-wait(1, SECONDS)
-
-Claw_motor.spin(REVERSE)
-wait(1, SECONDS)
-
-Neck_motor.spin_for(FORWARD, 125, DEGREES)
-wait(1, SECONDS)
-
-drivetrain.drive_for(REVERSE, 3, INCHES)
-drivetrain.turn_for(RIGHT, 90, DEGREES)
-
-drivetrain.drive_for(FORWARD, 45, INCHES)
-
+drivetrain.drive_for(FORWARD, 90, INCHES)
 drivetrain.turn_for(LEFT, 90, DEGREES)
-
-drivetrain.drive_for(FORWARD, 65, INCHES)
-
-#LEAVE BALL ON DESTINATION POINT 3
-
-Neck_motor.spin_for(REVERSE, 125, DEGREES)
-wait(2, SECONDS)
-Claw_motor.spin(FORWARD)
-wait(2, SECONDS)
-Neck_motor.spin_for(FORWARD, 125, DEGREES)
-wait(2, SECONDS)
+drivetrain.drive_for(FORWARD, 15, INCHES)
+#Set up
 Claw_motor.spin(REVERSE)
+Neck_motor.spin_for(FORWARD, 150, DEGREES)
 
-#RETURN TO PICKUP 3
 
-drivetrain.drive_for(REVERSE, 80, INCHES)
