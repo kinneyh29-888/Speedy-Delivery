@@ -73,5 +73,3 @@ drivetrain.drive_for(FORWARD, 15, INCHES)
 #Set up
 Claw_motor.spin(REVERSE)
 Neck_motor.spin_for(FORWARD, 150, DEGREES)
-
-
